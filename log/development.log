@@ -1,0 +1,331 @@
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAirports (20221216154746)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "airports" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "abbrv" varchar, "plane_capacity" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221216154746"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddInternationalToAirports (20221216155133)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "airports" ADD "international" boolean[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221216155133"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-12-16 15:53:00.692766"], ["updated_at", "2022-12-16 15:53:00.692766"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirport Create (0.2ms)[0m  [1m[32mINSERT INTO "airports" ("name", "abbrv", "plane_capacity", "created_at", "updated_at", "international") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "John F Kennedy Airport"], ["abbrv", "JFK"], ["plane_capacity", 5], ["created_at", "2022-12-16 15:58:54.660674"], ["updated_at", "2022-12-16 15:58:54.660674"], ["international", 1]]
+  [1m[36mTRANSACTION (29.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirport Create (0.1ms)[0m  [1m[32mINSERT INTO "airports" ("name", "abbrv", "plane_capacity", "created_at", "updated_at", "international") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Newark Airport"], ["abbrv", "EWR"], ["plane_capacity", 6], ["created_at", "2022-12-16 15:59:57.858678"], ["updated_at", "2022-12-16 15:59:57.858678"], ["international", 1]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirport Create (0.1ms)[0m  [1m[32mINSERT INTO "airports" ("name", "abbrv", "plane_capacity", "created_at", "updated_at", "international") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Colombus Airport"], ["abbrv", "CMH"], ["plane_capacity", 7], ["created_at", "2022-12-16 16:00:40.744990"], ["updated_at", "2022-12-16 16:00:40.744990"], ["international", 1]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/airports" for 127.0.0.1 at 2022-12-16 11:11:26 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AirportsController#show as HTML
+Completed 204 No Content in 6ms (ActiveRecord: 0.0ms | Allocations: 19562)
+
+
+Started GET "/airports" for 127.0.0.1 at 2022-12-16 11:11:41 -0500
+Processing by AirportsController#show as HTML
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 31)
+
+
+Started GET "/" for 127.0.0.1 at 2022-12-16 11:13:13 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/chett/.rvm/gems/ruby-2.7.4/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/chett/.rvm/gems/ruby-2.7.4/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.9ms | Allocations: 766)
+Completed 200 OK in 7ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 6580)
+
+
+Started GET "/airports" for 127.0.0.1 at 2022-12-16 11:13:17 -0500
+Processing by AirportsController#index as HTML
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports"[0m
+  ↳ app/controllers/airports_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 0.5ms | Allocations: 18101)
+
+
+Started GET "/airports/1" for 127.0.0.1 at 2022-12-16 11:15:16 -0500
+Processing by AirportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:9:in `show'
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 0.8ms | Allocations: 3644)
+
+
+Started GET "/airports/2" for 127.0.0.1 at 2022-12-16 11:15:19 -0500
+Processing by AirportsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:9:in `show'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 617)
+
+
+Started GET "/airports/hamburger" for 127.0.0.1 at 2022-12-16 11:15:36 -0500
+Processing by AirportsController#show as HTML
+  Parameters: {"id"=>"hamburger"}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:9:in `show'
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 484)
+
+
+Started GET "/airports/1" for 127.0.0.1 at 2022-12-16 11:16:46 -0500
+Processing by AirportsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:9:in `show'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 3074)
+
+
+Started GET "/airports/hamburger" for 127.0.0.1 at 2022-12-16 11:17:00 -0500
+Processing by AirportsController#show as HTML
+  Parameters: {"id"=>"hamburger"}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:9:in `show'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms | Allocations: 497)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Airport with 'id'=hamburger):
+  
+app/controllers/airports_controller.rb:9:in `show'
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-12-16 11:17:00 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Started GET "/airports/hamburger" for 127.0.0.1 at 2022-12-16 11:25:34 -0500
+Processing by AirportsController#show as HTML
+  Parameters: {"id"=>"hamburger"}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:10:in `show'
+Completed 200 OK in 3ms (ActiveRecord: 0.3ms | Allocations: 1123)
+
+
+Started GET "/airports/hamburger" for 127.0.0.1 at 2022-12-16 11:28:17 -0500
+Processing by AirportsController#show as HTML
+  Parameters: {"id"=>"hamburger"}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:10:in `show'
+Completed 404 Not Found in 5ms (Views: 0.1ms | ActiveRecord: 0.7ms | Allocations: 1616)
+
+
+Started GET "/airports/hamburger" for 127.0.0.1 at 2022-12-16 11:28:35 -0500
+Processing by AirportsController#show as HTML
+  Parameters: {"id"=>"hamburger"}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:10:in `show'
+Completed 404 Not Found in 3ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 502)
+
+
+Started POST "/airports" for ::1 at 2022-12-16 11:36:46 -0500
+Processing by AirportsController#create as */*
+  Parameters: {"name"=>"Heartsfield Intl", "abbrv"=>"ATL", "international"=>true, "place_capacity"=>10, "airport"=>{"name"=>"Heartsfield Intl", "abbrv"=>"ATL", "international"=>true}}
+[31mUnpermitted parameters: :place_capacity, :airport. Context: { controller: AirportsController, action: create, request: #<ActionDispatch::Request:0x00007f4810aa7288>, params: {"name"=>"Heartsfield Intl", "abbrv"=>"ATL", "international"=>true, "place_capacity"=>10, "controller"=>"airports", "action"=>"create", "airport"=>{"name"=>"Heartsfield Intl", "abbrv"=>"ATL", "international"=>true}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/airports_controller.rb:15:in `create'
+  [1m[36mAirport Create (0.2ms)[0m  [1m[32mINSERT INTO "airports" ("name", "abbrv", "plane_capacity", "created_at", "updated_at", "international") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Heartsfield Intl"], ["abbrv", "ATL"], ["plane_capacity", nil], ["created_at", "2022-12-16 16:36:46.940990"], ["updated_at", "2022-12-16 16:36:46.940990"], ["international", 1]]
+  ↳ app/controllers/airports_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/airports_controller.rb:15:in `create'
+Completed 201 Created in 9ms (Views: 0.9ms | ActiveRecord: 3.2ms | Allocations: 3466)
+
+
+Started POST "/airports" for ::1 at 2022-12-16 11:37:21 -0500
+Processing by AirportsController#create as */*
+  Parameters: {"name"=>"Heartsfield Intl", "abbrv"=>"ATL", "international"=>true, "plane_capacity"=>10, "airport"=>{"name"=>"Heartsfield Intl", "abbrv"=>"ATL", "plane_capacity"=>10, "international"=>true}}
+[31mUnpermitted parameter: :airport. Context: { controller: AirportsController, action: create, request: #<ActionDispatch::Request:0x00007f4810c79638>, params: {"name"=>"Heartsfield Intl", "abbrv"=>"ATL", "international"=>true, "plane_capacity"=>10, "controller"=>"airports", "action"=>"create", "airport"=>{"name"=>"Heartsfield Intl", "abbrv"=>"ATL", "plane_capacity"=>10, "international"=>true}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/airports_controller.rb:15:in `create'
+  [1m[36mAirport Create (0.2ms)[0m  [1m[32mINSERT INTO "airports" ("name", "abbrv", "plane_capacity", "created_at", "updated_at", "international") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Heartsfield Intl"], ["abbrv", "ATL"], ["plane_capacity", 10], ["created_at", "2022-12-16 16:37:21.396053"], ["updated_at", "2022-12-16 16:37:21.396053"], ["international", 1]]
+  ↳ app/controllers/airports_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/airports_controller.rb:15:in `create'
+Completed 201 Created in 5ms (Views: 0.5ms | ActiveRecord: 1.9ms | Allocations: 1885)
+
+
+Started POST "/airports" for ::1 at 2022-12-16 11:46:24 -0500
+Processing by AirportsController#create as */*
+  Parameters: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>-10000000000000000000000000000, "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>-10000000000000000000000000000, "international"=>true}}
+[31mUnpermitted parameter: :airport. Context: { controller: AirportsController, action: create, request: #<ActionDispatch::Request:0x00007f4800ec0be0>, params: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>-10000000000000000000000000000, "controller"=>"airports", "action"=>"create", "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>-10000000000000000000000000000, "international"=>true}} }[0m
+Completed 201 Created in 3ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1868)
+
+
+Started POST "/airports" for ::1 at 2022-12-16 11:47:20 -0500
+Processing by AirportsController#create as */*
+  Parameters: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>-10000000000000000000000000000, "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>-10000000000000000000000000000, "international"=>true}}
+[31mUnpermitted parameter: :airport. Context: { controller: AirportsController, action: create, request: #<ActionDispatch::Request:0x00007f4810f97d60>, params: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>-10000000000000000000000000000, "controller"=>"airports", "action"=>"create", "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>-10000000000000000000000000000, "international"=>true}} }[0m
+Completed 422 Unprocessable Entity in 25ms (ActiveRecord: 0.5ms | Allocations: 5286)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Plane capacity must be odd, Plane capacity must be in 1..50):
+  
+app/controllers/airports_controller.rb:15:in `create'
+Started POST "/airports" for ::1 at 2022-12-16 11:53:13 -0500
+  
+NoMethodError (undefined method `RecordInvalid' for ActiveRecord:Module):
+  
+app/controllers/airports_controller.rb:3:in `<class:AirportsController>'
+app/controllers/airports_controller.rb:1:in `<main>'
+Started POST "/airports" for ::1 at 2022-12-16 11:53:58 -0500
+Processing by AirportsController#create as */*
+  Parameters: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>-10000000000000000000000000000, "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>-10000000000000000000000000000, "international"=>true}}
+[31mUnpermitted parameter: :airport. Context: { controller: AirportsController, action: create, request: #<ActionDispatch::Request:0x00007f48109dc088>, params: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>-10000000000000000000000000000, "controller"=>"airports", "action"=>"create", "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>-10000000000000000000000000000, "international"=>true}} }[0m
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 4643)
+
+
+  
+NameError (undefined local variable or method `byebug' for #<AirportsController:0x000000000286e0>):
+  
+app/controllers/airports_controller.rb:27:in `render_error_invalid'
+Started POST "/airports" for ::1 at 2022-12-16 11:55:01 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AirportsController#create as */*
+  Parameters: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>-10000000000000000000000000000, "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>-10000000000000000000000000000, "international"=>true}}
+[31mUnpermitted parameter: :airport. Context: { controller: AirportsController, action: create, request: #<ActionDispatch::Request:0x000055cca2ba7740>, params: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>-10000000000000000000000000000, "controller"=>"airports", "action"=>"create", "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>-10000000000000000000000000000, "international"=>true}} }[0m
+Completed 500 Internal Server Error in 284451ms (ActiveRecord: 0.4ms | Allocations: 157739)
+
+
+  
+NoMethodError (undefined method `full_messages' for #<ActiveRecord::RecordInvalid:0x00007f0af4cb1320>
+Did you mean?  full_message):
+  
+app/controllers/airports_controller.rb:28:in `render_error_invalid'
+Started POST "/airports" for ::1 at 2022-12-16 12:00:09 -0500
+Processing by AirportsController#create as */*
+  Parameters: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>-10000000000000000000000000000, "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>-10000000000000000000000000000, "international"=>true}}
+[31mUnpermitted parameter: :airport. Context: { controller: AirportsController, action: create, request: #<ActionDispatch::Request:0x00007f0af488e130>, params: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>-10000000000000000000000000000, "controller"=>"airports", "action"=>"create", "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>-10000000000000000000000000000, "international"=>true}} }[0m
+Completed 422 Unprocessable Entity in 3ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 3716)
+
+
+Started POST "/airports" for ::1 at 2022-12-16 12:00:31 -0500
+Processing by AirportsController#create as */*
+  Parameters: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>0.5, "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>0.5, "international"=>true}}
+[31mUnpermitted parameter: :airport. Context: { controller: AirportsController, action: create, request: #<ActionDispatch::Request:0x00007f0adc01b7e0>, params: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>0.5, "controller"=>"airports", "action"=>"create", "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>0.5, "international"=>true}} }[0m
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1367)
+
+
+Started POST "/airports" for ::1 at 2022-12-16 12:00:40 -0500
+Processing by AirportsController#create as */*
+  Parameters: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>51, "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>51, "international"=>true}}
+[31mUnpermitted parameter: :airport. Context: { controller: AirportsController, action: create, request: #<ActionDispatch::Request:0x00007f0ae00138c0>, params: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>51, "controller"=>"airports", "action"=>"create", "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>51, "international"=>true}} }[0m
+Completed 422 Unprocessable Entity in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1319)
+
+
+Started POST "/airports" for ::1 at 2022-12-16 12:00:46 -0500
+Processing by AirportsController#create as */*
+  Parameters: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>48, "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>48, "international"=>true}}
+[31mUnpermitted parameter: :airport. Context: { controller: AirportsController, action: create, request: #<ActionDispatch::Request:0x00007f0af0134460>, params: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>48, "controller"=>"airports", "action"=>"create", "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>48, "international"=>true}} }[0m
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1287)
+
+
+Started POST "/airports" for ::1 at 2022-12-16 12:00:59 -0500
+Processing by AirportsController#create as */*
+  Parameters: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>49, "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>49, "international"=>true}}
+[31mUnpermitted parameter: :airport. Context: { controller: AirportsController, action: create, request: #<ActionDispatch::Request:0x00007f0ae400d0e8>, params: {"name"=>"Badsfield Intl", "abbrv"=>"BAD", "international"=>true, "plane_capacity"=>49, "controller"=>"airports", "action"=>"create", "airport"=>{"name"=>"Badsfield Intl", "abbrv"=>"BAD", "plane_capacity"=>49, "international"=>true}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/airports_controller.rb:16:in `create'
+  [1m[36mAirport Create (0.2ms)[0m  [1m[32mINSERT INTO "airports" ("name", "abbrv", "plane_capacity", "created_at", "updated_at", "international") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Badsfield Intl"], ["abbrv", "BAD"], ["plane_capacity", 49], ["created_at", "2022-12-16 17:00:59.022637"], ["updated_at", "2022-12-16 17:00:59.022637"], ["international", 1]]
+  ↳ app/controllers/airports_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/airports_controller.rb:16:in `create'
+Completed 201 Created in 10ms (Views: 0.4ms | ActiveRecord: 6.7ms | Allocations: 2039)
+
+
+Started PATCH "/airports/2" for ::1 at 2022-12-16 14:11:34 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AirportsController#update as */*
+  Parameters: {"international"=>false, "id"=>"2", "airport"=>{"international"=>false}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:21:in `update'
+[31mUnpermitted parameters: :id, :airport. Context: { controller: AirportsController, action: update, request: #<ActionDispatch::Request:0x00007f4904b8af70>, params: {"international"=>false, "controller"=>"airports", "action"=>"update", "id"=>"2", "airport"=>{"international"=>false}} }[0m
+Completed 422 Unprocessable Entity in 13ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 39912)
+
+
+Started GET "/airports/2" for ::1 at 2022-12-16 14:11:43 -0500
+Processing by AirportsController#show as */*
+  Parameters: {"username"=>"alex", "email"=>"alex@flatironschool.com", "password"=>"[FILTERED]", "id"=>"2", "airport"=>{}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:11:in `show'
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 632)
+
+
+Started PATCH "/airports/2" for ::1 at 2022-12-16 14:12:26 -0500
+Processing by AirportsController#update as */*
+  Parameters: {"international"=>false, "plane_capacity"=>7, "id"=>"2", "airport"=>{"plane_capacity"=>7, "international"=>false}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:21:in `update'
+[31mUnpermitted parameters: :id, :airport. Context: { controller: AirportsController, action: update, request: #<ActionDispatch::Request:0x00007f490000b6a8>, params: {"international"=>false, "plane_capacity"=>7, "controller"=>"airports", "action"=>"update", "id"=>"2", "airport"=>{"plane_capacity"=>7, "international"=>false}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/airports_controller.rb:22:in `update'
+  [1m[36mAirport Update (0.1ms)[0m  [1m[33mUPDATE "airports" SET "plane_capacity" = ?, "updated_at" = ?, "international" = ? WHERE "airports"."id" = ?[0m  [["plane_capacity", 7], ["updated_at", "2022-12-16 19:12:26.534638"], ["international", 0], ["id", 2]]
+  ↳ app/controllers/airports_controller.rb:22:in `update'
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/airports_controller.rb:22:in `update'
+Completed 202 Accepted in 10ms (Views: 0.2ms | ActiveRecord: 7.0ms | Allocations: 2429)
+
+
+Started PATCH "/airports/2" for ::1 at 2022-12-16 14:12:55 -0500
+Processing by AirportsController#update as */*
+  Parameters: {"id"=>"2", "airport"=>{"id"=>"2"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:21:in `update'
+[31mUnpermitted parameters: :id, :airport. Context: { controller: AirportsController, action: update, request: #<ActionDispatch::Request:0x00007f4910b04a68>, params: {"id"=>"2", "controller"=>"airports", "action"=>"update", "airport"=>{"id"=>"2"}} }[0m
+Completed 202 Accepted in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 817)
+
+
+Started PATCH "/airports/10000000000000000000000" for ::1 at 2022-12-16 14:13:41 -0500
+Processing by AirportsController#update as */*
+  Parameters: {"id"=>"10000000000000000000000", "airport"=>{"id"=>"10000000000000000000000"}}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 160)
+
+
+Started GET "/airports/5" for ::1 at 2022-12-16 14:20:52 -0500
+Processing by AirportsController#show as */*
+  Parameters: {"username"=>"alex", "email"=>"alex@flatironschool.com", "password"=>"[FILTERED]", "id"=>"5", "airport"=>{}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:46:in `find_airport'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 2152)
+
+
+Started GET "/airports/4" for ::1 at 2022-12-16 14:21:00 -0500
+Processing by AirportsController#show as */*
+  Parameters: {"username"=>"alex", "email"=>"alex@flatironschool.com", "password"=>"[FILTERED]", "id"=>"4", "airport"=>{}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:46:in `find_airport'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 603)
+
+
+Started DELETE "/airports/4" for ::1 at 2022-12-16 14:21:57 -0500
+  
+ActionController::RoutingError (No route matches [DELETE] "/airports/4"):
+  
+Started DELETE "/airports/4" for ::1 at 2022-12-16 14:22:54 -0500
+Processing by AirportsController#destroy as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:46:in `find_airport'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/airports_controller.rb:27:in `destroy'
+  [1m[36mAirport Destroy (0.1ms)[0m  [1m[31mDELETE FROM "airports" WHERE "airports"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/airports_controller.rb:27:in `destroy'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/airports_controller.rb:27:in `destroy'
+Completed 204 No Content in 8ms (ActiveRecord: 3.6ms | Allocations: 4292)
+
+
+Started GET "/airports/4" for ::1 at 2022-12-16 14:23:09 -0500
+Processing by AirportsController#show as */*
+  Parameters: {"username"=>"alex", "email"=>"alex@flatironschool.com", "password"=>"[FILTERED]", "id"=>"4", "airport"=>{}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:46:in `find_airport'
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 499)
+
+
