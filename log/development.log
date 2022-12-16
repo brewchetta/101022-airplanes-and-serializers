@@ -329,3 +329,367 @@ Processing by AirportsController#show as */*
 Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 499)
 
 
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAirplanes (20221216200603)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "airplanes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "seats" integer, "model" text, "airport_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221216200603"]]
+  [1m[36mTRANSACTION (29.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 200000], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAirplane Create (0.3ms)[0m  [1m[32mINSERT INTO "airplanes" ("seats", "model", "airport_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["seats", 180], ["model", "Boeing A142L"], ["airport_id", 1], ["created_at", "2022-12-16 20:15:03.652619"], ["updated_at", "2022-12-16 20:15:03.652619"]]
+  [1m[36mTRANSACTION (28.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAirplane Create (0.1ms)[0m  [1m[32mINSERT INTO "airplanes" ("seats", "model", "airport_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["seats", 2], ["model", "Sesna"], ["airport_id", 1], ["created_at", "2022-12-16 20:15:29.484191"], ["updated_at", "2022-12-16 20:15:29.484191"]]
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/airplanes" for ::1 at 2022-12-16 15:17:27 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AirplanesController#index as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "airplane"=>{}}
+  [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes"[0m
+  ↳ app/controllers/airplanes_controller.rb:5:in `index'
+Completed 200 OK in 11ms (Views: 6.3ms | ActiveRecord: 0.5ms | Allocations: 34889)
+
+
+Started GET "/airplanes/1" for ::1 at 2022-12-16 15:17:32 -0500
+Processing by AirplanesController#show as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "id"=>"1", "airplane"=>{}}
+  [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/airplanes_controller.rb:9:in `show'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 1273)
+
+
+Started GET "/airplanes" for ::1 at 2022-12-16 15:17:38 -0500
+Processing by AirplanesController#index as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "airplane"=>{}}
+  [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes"[0m
+  ↳ app/controllers/airplanes_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 837)
+
+
+Started GET "/airports" for ::1 at 2022-12-16 15:17:49 -0500
+Processing by AirportsController#index as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports"[0m
+  ↳ app/controllers/airports_controller.rb:8:in `index'
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.4ms | Allocations: 15821)
+
+
+Started GET "/airports/1" for ::1 at 2022-12-16 15:18:39 -0500
+Processing by AirportsController#show as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "id"=>"1", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:46:in `find_airport'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 732)
+
+
+Started GET "/airports/1" for ::1 at 2022-12-16 15:19:21 -0500
+Processing by AirportsController#show as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "id"=>"1", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:46:in `find_airport'
+  [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 1]]
+  ↳ app/controllers/airports_controller.rb:12:in `show'
+Completed 200 OK in 13ms (Views: 9.8ms | ActiveRecord: 0.9ms | Allocations: 11468)
+
+
+Started GET "/airports/1" for ::1 at 2022-12-16 15:22:44 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AirportsController#show as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "id"=>"1", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:46:in `find_airport'
+[active_model_serializers] Rendered AirportSerializer with ActiveModelSerializers::Adapter::Attributes (0.24ms)
+Completed 200 OK in 27ms (Views: 16.6ms | ActiveRecord: 0.4ms | Allocations: 38377)
+
+
+Started GET "/airports/1" for ::1 at 2022-12-16 15:23:41 -0500
+Processing by AirportsController#show as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "id"=>"1", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/airports_controller.rb:46:in `find_airport'
+[active_model_serializers] Rendered AirportSerializer with ActiveModelSerializers::Adapter::Attributes (0.24ms)
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.6ms | Allocations: 2593)
+
+
+Started GET "/airports" for ::1 at 2022-12-16 15:23:50 -0500
+Processing by AirportsController#index as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports"[0m
+  ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1375)
+
+
+Started GET "/airports" for ::1 at 2022-12-16 15:25:15 -0500
+Processing by AirportsController#index as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports"[0m
+  ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 1]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 2]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 3]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 5]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 6]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (21.7ms)
+Completed 200 OK in 25ms (Views: 23.8ms | ActiveRecord: 1.1ms | Allocations: 27734)
+
+
+Started GET "/airports" for ::1 at 2022-12-16 15:25:36 -0500
+Processing by AirportsController#index as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports"[0m
+  ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 1]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] No serializer found for resource: #<Airplane id: 1, seats: 180, model: "Boeing A142L", airport_id: 1, created_at: "2022-12-16 20:15:03.652619000 +0000", updated_at: "2022-12-16 20:15:03.652619000 +0000">
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 2]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 3]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 5]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 6]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] No serializer found for resource: #<Airplane id: 1, seats: 180, model: "Boeing A142L", airport_id: 1, created_at: "2022-12-16 20:15:03.652619000 +0000", updated_at: "2022-12-16 20:15:03.652619000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.7ms)
+Completed 200 OK in 19ms (Views: 18.3ms | ActiveRecord: 1.1ms | Allocations: 14033)
+
+
+Started GET "/airports" for ::1 at 2022-12-16 15:26:13 -0500
+Processing by AirportsController#index as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports"[0m
+  ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 1]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] No serializer found for resource: #<Airplane id: 1, seats: 180, model: "Boeing A142L", airport_id: 1, created_at: "2022-12-16 20:15:03.652619000 +0000", updated_at: "2022-12-16 20:15:03.652619000 +0000">
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 2]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 3]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 5]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 6]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] No serializer found for resource: #<Airplane id: 1, seats: 180, model: "Boeing A142L", airport_id: 1, created_at: "2022-12-16 20:15:03.652619000 +0000", updated_at: "2022-12-16 20:15:03.652619000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.01ms)
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 1.1ms | Allocations: 11861)
+
+
+Started GET "/airports" for ::1 at 2022-12-16 15:26:15 -0500
+Processing by AirportsController#index as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports"[0m
+  ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 1]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] No serializer found for resource: #<Airplane id: 1, seats: 180, model: "Boeing A142L", airport_id: 1, created_at: "2022-12-16 20:15:03.652619000 +0000", updated_at: "2022-12-16 20:15:03.652619000 +0000">
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 2]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 3]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 5]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 6]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] No serializer found for resource: #<Airplane id: 1, seats: 180, model: "Boeing A142L", airport_id: 1, created_at: "2022-12-16 20:15:03.652619000 +0000", updated_at: "2022-12-16 20:15:03.652619000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.39ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.3ms | Allocations: 6367)
+
+
+Started GET "/airports" for ::1 at 2022-12-16 15:26:16 -0500
+Processing by AirportsController#index as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports"[0m
+  ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 1]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] No serializer found for resource: #<Airplane id: 1, seats: 180, model: "Boeing A142L", airport_id: 1, created_at: "2022-12-16 20:15:03.652619000 +0000", updated_at: "2022-12-16 20:15:03.652619000 +0000">
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 2]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 3]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 5]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 6]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] No serializer found for resource: #<Airplane id: 1, seats: 180, model: "Boeing A142L", airport_id: 1, created_at: "2022-12-16 20:15:03.652619000 +0000", updated_at: "2022-12-16 20:15:03.652619000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.74ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.3ms | Allocations: 6365)
+
+
+Started GET "/airports" for ::1 at 2022-12-16 15:26:19 -0500
+Processing by AirportsController#index as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports"[0m
+  ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 1]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] No serializer found for resource: #<Airplane id: 1, seats: 180, model: "Boeing A142L", airport_id: 1, created_at: "2022-12-16 20:15:03.652619000 +0000", updated_at: "2022-12-16 20:15:03.652619000 +0000">
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 2]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 3]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 5]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 6]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] No serializer found for resource: #<Airplane id: 1, seats: 180, model: "Boeing A142L", airport_id: 1, created_at: "2022-12-16 20:15:03.652619000 +0000", updated_at: "2022-12-16 20:15:03.652619000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.0ms)
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.3ms | Allocations: 6386)
+
+
+Started GET "/airports" for ::1 at 2022-12-16 15:26:20 -0500
+Processing by AirportsController#index as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports"[0m
+  ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 1]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] No serializer found for resource: #<Airplane id: 1, seats: 180, model: "Boeing A142L", airport_id: 1, created_at: "2022-12-16 20:15:03.652619000 +0000", updated_at: "2022-12-16 20:15:03.652619000 +0000">
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 2]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 3]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 5]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 6]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] No serializer found for resource: #<Airplane id: 1, seats: 180, model: "Boeing A142L", airport_id: 1, created_at: "2022-12-16 20:15:03.652619000 +0000", updated_at: "2022-12-16 20:15:03.652619000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.1ms)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.3ms | Allocations: 6365)
+
+
+Started GET "/airplane/1" for ::1 at 2022-12-16 15:27:32 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/airplane/1"):
+  
+Started GET "/airplanes/1" for ::1 at 2022-12-16 15:27:40 -0500
+Processing by AirplanesController#show as */*
+  Parameters: {"username"=>"alex", "email"=>"alex@flatironschool.com", "password"=>"[FILTERED]", "id"=>"1", "airplane"=>{}}
+  [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/airplanes_controller.rb:9:in `show'
+[active_model_serializers] Rendered AirplaneSerializer with ActiveModelSerializers::Adapter::Attributes (0.19ms)
+Completed 200 OK in 13ms (Views: 2.2ms | ActiveRecord: 0.6ms | Allocations: 37073)
+
+
+Started GET "/airports" for ::1 at 2022-12-16 15:27:59 -0500
+Processing by AirportsController#index as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports"[0m
+  ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 1]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 2]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 3]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 5]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 6]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.8ms)
+Completed 200 OK in 14ms (Views: 13.7ms | ActiveRecord: 0.7ms | Allocations: 26736)
+
+
+Started GET "/airplanes/1" for ::1 at 2022-12-16 15:29:41 -0500
+Processing by AirplanesController#show as */*
+  Parameters: {"username"=>"alex", "email"=>"alex@flatironschool.com", "password"=>"[FILTERED]", "id"=>"1", "airplane"=>{}}
+  [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/airplanes_controller.rb:9:in `show'
+[active_model_serializers]   [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/airplanes_controller.rb:10:in `show'
+[active_model_serializers] Rendered AirplaneSerializer with ActiveModelSerializers::Adapter::Attributes (6.66ms)
+Completed 200 OK in 35ms (Views: 32.8ms | ActiveRecord: 1.0ms | Allocations: 7218)
+
+
+Started GET "/airports" for ::1 at 2022-12-16 15:29:59 -0500
+Processing by AirportsController#index as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports"[0m
+  ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 1]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 2]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 3]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 5]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 6]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.8ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.3ms | Allocations: 6603)
+
+
+Started GET "/airports" for ::1 at 2022-12-16 15:31:04 -0500
+Processing by AirportsController#index as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports"[0m
+  ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 1]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 2]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 3]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 5]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 6]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.95ms)
+Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 1.1ms | Allocations: 11883)
+
+
+Started GET "/airports" for ::1 at 2022-12-16 15:32:44 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AirportsController#index as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports"[0m
+  ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 1]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 2]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 3]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 5]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 6]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (13.25ms)
+Completed 200 OK in 26ms (Views: 20.8ms | ActiveRecord: 1.0ms | Allocations: 65462)
+
+
+Started GET "/airports" for ::1 at 2022-12-16 15:33:57 -0500
+Processing by AirportsController#index as */*
+  Parameters: {"name"=>"John", "field_of_study"=>"space school", "avatar"=>"whatever", "airport"=>{"name"=>"John"}}
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports"[0m
+  ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 1]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 2]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 3]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.1ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 5]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mAirplane Load (0.0ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes" WHERE "airplanes"."airport_id" = ?[0m  [["airport_id", 6]]
+[active_model_serializers]   ↳ app/controllers/airports_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (17.93ms)
+Completed 200 OK in 21ms (Views: 20.4ms | ActiveRecord: 1.1ms | Allocations: 11662)
+
+

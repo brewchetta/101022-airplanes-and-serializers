@@ -25,7 +25,7 @@ class AirportsController < ApplicationController
   def destroy
     # airport = Airport.find(params[:airport])
     @airport.destroy
-    render json: "BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    render json: "BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOM"
   end
 
   private
